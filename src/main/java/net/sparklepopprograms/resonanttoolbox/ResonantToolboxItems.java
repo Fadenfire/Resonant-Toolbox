@@ -15,6 +15,7 @@ public class ResonantToolboxItems {
 	public static Item Sapphire;
 	public static Item Iron_Rod;
 	public static Item Resonating_Engine;
+	public static Item Immortality_Engine;
 	
 	public static void RegisterItems() {
 		
@@ -22,11 +23,13 @@ public class ResonantToolboxItems {
 		Sapphire = new Sapphire();
 		Iron_Rod = new Item().setUnlocalizedName("Iron_Rod").setTextureName(ResonantToolbox.modid + ":Iron_Rod").setCreativeTab(ResonantToolboxTab.tab);
 		Resonating_Engine = new Resonating_Engine();
+		Immortality_Engine = new Immortality_Engine();
 		
 		GameRegistry.registerItem(MRE, "MRE");
 		GameRegistry.registerItem(Sapphire, "Sapphire");
 		GameRegistry.registerItem(Iron_Rod, "Iron_Rod");
 		GameRegistry.registerItem(Resonating_Engine, "Resonating_Engine");
+		GameRegistry.registerItem(Immortality_Engine, "Immortality_Engine");
 		
 		OreDictionary.registerOre("gemSapphire", new ItemStack(Sapphire, 1, 0));
 		

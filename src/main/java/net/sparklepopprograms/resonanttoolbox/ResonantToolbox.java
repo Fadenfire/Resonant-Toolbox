@@ -28,7 +28,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 public class ResonantToolbox {
 	
 	public static final String modid = "ResonantToolbox";
-	public static final String version = "1.0.1";
+	public static final String version = "1.0.2";
 	public static final String dependencies = "required-after:DimensionalCore@[1.0.1,);required-after:ThermalExpansion@[1.7.10R4.1.1B237,)";
 
 	@EventHandler

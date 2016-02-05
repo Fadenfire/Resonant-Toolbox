@@ -5,17 +5,12 @@ import java.util.List;
 
 import cofh.api.energy.IEnergyContainerItem;
 import cofh.api.energy.ItemEnergyContainer;
-import net.java.games.input.Component;
-import net.java.games.input.Keyboard;
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
@@ -23,59 +18,85 @@ import net.sparklepopprograms.core.util.FormatHelper;
 import net.sparklepopprograms.resonanttoolbox.ResonantToolbox;
 import net.sparklepopprograms.resonanttoolbox.util.ResonantToolboxTab;
 
-public class MaterialRelocationEnforcer extends Item implements IEnergyContainerItem {
+public class Immortality_Engine extends Item implements IEnergyContainerItem {
 	
 	protected int capacity;
 	protected int maxReceive;
 	protected int maxExtract;
 	
-	public MaterialRelocationEnforcer() {
+	public Immortality_Engine() {
 		super();
-		this.setUnlocalizedName("MRE");
-		this.setMaxStackSize(1);
-		this.setTextureName(ResonantToolbox.modid + ":MRE");
-		this.setMaxTransfer(10_000_000);
-		this.setCapacity(60_000_000);
+		this.setTextureName(ResonantToolbox.modid + ":Immortality_Engine");
+		this.setUnlocalizedName("Immortality_Engine");
 		this.setCreativeTab(ResonantToolboxTab.tab);
+		this.setMaxStackSize(1);
+		this.setMaxTransfer(10_000_000);
+		this.setCapacity(1_000_000_000);
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
+	public void onUpdate(ItemStack item, World world, Entity player, int p_77663_4_, boolean p_77663_5_) {
 		if (item.stackTagCompound == null) {
 			item.stackTagCompound = new NBTTagCompound();
 		}
-		if (item.stackTagCompound.getInteger("Energy") >= 200_000) {
-			item.stackTagCompound.setInteger("Energy", item.stackTagCompound.getInteger("Energy") - 200_000);
-			world.func_147480_a(x, y, z, true);
-		} else {
-			if (!world.isRemote) {
-				player.addChatMessage(new ChatComponentTranslation(EnumChatFormatting.RED + "Not enough power!"));
+		
+		if (!((EntityPlayer)player).capabilities.isCreativeMode && item.stackTagCompound.getBoolean("Activated") == true) {
+			if (item.stackTagCompound.getInteger("Energy") >= 50_000) {
+				item.stackTagCompound.setInteger("Energy", item.stackTagCompound.getInteger("Energy") - 50_000);
+				((EntityPlayer)player).addPotionEffect(new PotionEffect(11, 1, 100, true));
 			}
 		}
-		
-		return true;
 	}
 
 	@Override
-	public void addInformation(ItemStack item, EntityPlayer player, List list, boolean p_77624_4_) {
+	public void addInformation(ItemStack item, EntityPlayer player, List list, boolean thing) {
 		if (item.stackTagCompound == null) {
 			item.stackTagCompound = new NBTTagCompound();
 		}
-		List<String> text = new ArrayList<String>();
+		
+		List text = new ArrayList();
 		
 		text.add("Charge: " + FormatHelper.shortenNumber(item.stackTagCompound.getInteger("Energy")) + " / " + FormatHelper.shortenNumber(this.capacity) + " RF");
-		text.add(EnumChatFormatting.GREEN + "Destroys blocks instantly");
-		text.add(EnumChatFormatting.GREEN + "Uses 200K RF per block.");
+		text.add(EnumChatFormatting.GREEN + "Grants Immortality to the user.");
+		text.add(EnumChatFormatting.GREEN + "Uses 50K RF per tick.");
+		
+		if (item.stackTagCompound.getBoolean("Activated") == true) {
+			text.add(EnumChatFormatting.YELLOW + "Use while sneaking to acitvate.");
+		} else if (item.stackTagCompound.getBoolean("Activated") == false) {
+			text.add(EnumChatFormatting.YELLOW + "Use while sneaking to deacitvate.");
+		}
 		
 		FormatHelper.addShiftTooltip(list, text);
 	}
 
 	@Override
-	public boolean isFull3D() {
-		return true;
+	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player) {
+		if (item.stackTagCompound == null) {
+			item.stackTagCompound = new NBTTagCompound();
+		}
+		
+		if (item.stackTagCompound.getBoolean("Activated") == true) {
+			item.stackTagCompound.setBoolean("Activated", false);
+		} else if (item.stackTagCompound.getBoolean("Activated") == false) {
+			item.stackTagCompound.setBoolean("Activated", true);
+		}
+		return item;
 	}
 
-	public MaterialRelocationEnforcer setCapacity(int capacity) {
+	@Override
+	public boolean hasEffect(ItemStack item, int pass) {
+		if (item.stackTagCompound == null) {
+			item.stackTagCompound = new NBTTagCompound();
+		}
+		
+		if (item.stackTagCompound.getBoolean("Activated") == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public Immortality_Engine setCapacity(int capacity) {
 
 		this.capacity = capacity;
 		return this;
