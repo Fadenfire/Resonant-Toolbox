@@ -12,11 +12,10 @@ import cpw.mods.fml.common.IWorldGenerator;
 public class SapphireOreGenerator implements IWorldGenerator {
 
 	@Override
-	public void generate(Random random, int x, int z, World world,
-			IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
-		if (world.provider.dimensionId == 0) {
-			addOreSpawn(ResonantToolboxBlocks.Sapphire_Ore, world, random, x*16, z*16, 16, 16, 5, 15, 1, 70);
-		}
+	public void generate(Random random, int x, int z, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
+			
+		addOreSpawn(ResonantToolboxBlocks.Sapphire_Ore, world, random, x*16, z*16, 16, 16, 5, 10, 1, 70);
+		
 	}
 
     public void addOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int maxX, int maxZ, int maxVeinSize, int chancesToSpawn, int minY, int maxY){
@@ -28,8 +27,7 @@ public class SapphireOreGenerator implements IWorldGenerator {
           assert maxZ > 0 && maxZ <= 16;
          
           int diffBtwnMinMaxY = maxY - minY;
-          for(int x = 0; x < chancesToSpawn; x++)
-          {
+          for(int x = 0; x < chancesToSpawn; x++) {
                  int posX = blockXPos + random.nextInt(maxX);
                  int posY = minY + random.nextInt(diffBtwnMinMaxY);
                  int posZ = blockZPos + random.nextInt(maxZ);

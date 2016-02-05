@@ -1,6 +1,6 @@
 //Tab
 
-
+itemGroup.ResonantToolboxTab=Resonant Toolbox
 
 //Items
 
@@ -9,3 +9,7 @@ item.Sapphire_0.name=Sapphire
 item.Sapphire_1.name=Inbued Sapphire
 item.Iron_Rod.name=Iron Rod
 item.Resonating_Engine.name=Resonating Engine
+
+//Blocks
+
+tile.Sapphire_Ore.name=Sapphire Ore

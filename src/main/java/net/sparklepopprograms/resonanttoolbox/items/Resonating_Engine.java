@@ -1,10 +1,13 @@
 package net.sparklepopprograms.resonanttoolbox.items;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
+import net.sparklepopprograms.core.util.FormatHelper;
 import net.sparklepopprograms.resonanttoolbox.ResonantToolbox;
 import net.sparklepopprograms.resonanttoolbox.util.ResonantToolboxTab;
 
@@ -19,7 +22,12 @@ public class Resonating_Engine extends Item {
 
 	@Override
 	public void addInformation(ItemStack item, EntityPlayer player, List list, boolean thing) {
+		List text = new ArrayList();
 		
+		text.add(EnumChatFormatting.GREEN + "Creates a Resonating Field when powered.");
+		text.add(EnumChatFormatting.GREEN + "Has been know to make your head explode.");
+		
+		FormatHelper.addShiftTooltip(list, text);
 	}
 
 }
