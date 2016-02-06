@@ -34,8 +34,8 @@ public class MaterialRelocationEnforcer extends Item implements IEnergyContainer
 		this.setUnlocalizedName("MRE");
 		this.setMaxStackSize(1);
 		this.setTextureName(ResonantToolbox.modid + ":MRE");
-		this.setMaxTransfer(10_000_000);
-		this.setCapacity(60_000_000);
+		this.setMaxTransfer(10000000);
+		this.setCapacity(60000000);
 		this.setCreativeTab(ResonantToolboxTab.tab);
 	}
 
@@ -44,8 +44,8 @@ public class MaterialRelocationEnforcer extends Item implements IEnergyContainer
 		if (item.stackTagCompound == null) {
 			item.stackTagCompound = new NBTTagCompound();
 		}
-		if (item.stackTagCompound.getInteger("Energy") >= 200_000) {
-			item.stackTagCompound.setInteger("Energy", item.stackTagCompound.getInteger("Energy") - 200_000);
+		if (item.stackTagCompound.getInteger("Energy") >= 200000) {
+			item.stackTagCompound.setInteger("Energy", item.stackTagCompound.getInteger("Energy") - 200000);
 			world.func_147480_a(x, y, z, true);
 		} else {
 			if (!world.isRemote) {

@@ -30,8 +30,8 @@ public class Immortality_Engine extends Item implements IEnergyContainerItem {
 		this.setUnlocalizedName("Immortality_Engine");
 		this.setCreativeTab(ResonantToolboxTab.tab);
 		this.setMaxStackSize(1);
-		this.setMaxTransfer(10_000_000);
-		this.setCapacity(1_000_000_000);
+		this.setMaxTransfer(10000000);
+		this.setCapacity(1000000000);
 	}
 
 	@Override
@@ -41,8 +41,8 @@ public class Immortality_Engine extends Item implements IEnergyContainerItem {
 		}
 		
 		if (!((EntityPlayer)player).capabilities.isCreativeMode && item.stackTagCompound.getBoolean("Activated") == true) {
-			if (item.stackTagCompound.getInteger("Energy") >= 50_000) {
-				item.stackTagCompound.setInteger("Energy", item.stackTagCompound.getInteger("Energy") - 50_000);
+			if (item.stackTagCompound.getInteger("Energy") >= 50000) {
+				item.stackTagCompound.setInteger("Energy", item.stackTagCompound.getInteger("Energy") - 50000);
 				((EntityPlayer)player).addPotionEffect(new PotionEffect(11, 1, 100, true));
 			}
 		}
