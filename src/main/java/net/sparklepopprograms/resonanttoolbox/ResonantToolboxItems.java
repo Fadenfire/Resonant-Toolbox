@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.sparklepopprograms.core.util.LogHelper;
 import net.sparklepopprograms.resonanttoolbox.items.*;
+import net.sparklepopprograms.resonanttoolbox.util.ConfigHandler;
 import net.sparklepopprograms.resonanttoolbox.util.ResonantToolboxTab;
 
 public class ResonantToolboxItems {
@@ -19,17 +20,17 @@ public class ResonantToolboxItems {
 	
 	public static void RegisterItems() {
 		
-		MRE = new MaterialRelocationEnforcer();
+		if (ConfigHandler.enableMaterialRelocationEnforcer) {MRE = new MaterialRelocationEnforcer();}
 		Sapphire = new Sapphire();
 		Iron_Rod = new Item().setUnlocalizedName("Iron_Rod").setTextureName(ResonantToolbox.modid + ":Iron_Rod").setCreativeTab(ResonantToolboxTab.tab);
 		Resonating_Engine = new Resonating_Engine();
-		Immortality_Engine = new Immortality_Engine();
+		if (ConfigHandler.enableImortalityEngine) {Immortality_Engine = new Immortality_Engine();}
 		
-		GameRegistry.registerItem(MRE, "MRE");
+		if (ConfigHandler.enableMaterialRelocationEnforcer) {GameRegistry.registerItem(MRE, "MRE");}
 		GameRegistry.registerItem(Sapphire, "Sapphire");
 		GameRegistry.registerItem(Iron_Rod, "Iron_Rod");
 		GameRegistry.registerItem(Resonating_Engine, "Resonating_Engine");
-		GameRegistry.registerItem(Immortality_Engine, "Immortality_Engine");
+		if (ConfigHandler.enableImortalityEngine) {GameRegistry.registerItem(Immortality_Engine, "Immortality_Engine");}
 		
 		OreDictionary.registerOre("gemSapphire", new ItemStack(Sapphire, 1, 0));
 		

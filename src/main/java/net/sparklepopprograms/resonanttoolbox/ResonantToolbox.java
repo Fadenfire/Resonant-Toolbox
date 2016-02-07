@@ -1,6 +1,10 @@
 package net.sparklepopprograms.resonanttoolbox;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+
 import scala.Int;
+import scala.tools.nsc.settings.Final;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -18,7 +22,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.potion.Potion;
+import net.minecraftforge.common.MinecraftForge;
 import net.sparklepopprograms.core.util.LogHelper;
+import net.sparklepopprograms.resonanttoolbox.util.ConfigHandler;
+import net.sparklepopprograms.resonanttoolbox.util.PotionReg;
+import net.sparklepopprograms.resonanttoolbox.util.ResonantToolboxEventHooks;
 import net.sparklepopprograms.resonanttoolbox.util.SapphireOreGenerator;
 import cpw.mods.fml.common.Mod.EventHandler;
 
@@ -28,14 +37,47 @@ import cpw.mods.fml.common.Mod.EventHandler;
 public class ResonantToolbox {
 	
 	public static final String modid = "ResonantToolbox";
-	public static final String version = "1.0.2";
+	public static final String version = "1.0.3";
 	public static final String dependencies = "required-after:DimensionalCore@[1.0.1,);required-after:ThermalExpansion@[1.7.10R4.1.1B237,)";
 
+	public static Potion immortality;
+	
 	@EventHandler
 	public void load(FMLPreInitializationEvent event) {
 		
-		GameRegistry.registerWorldGenerator(new SapphireOreGenerator(), 0);
-		LogHelper.info("Registered Sapphire World Generator", modid);
+		ConfigHandler.initProps();
+		
+		if (ConfigHandler.enableSapphireOreGen) {
+			GameRegistry.registerWorldGenerator(new SapphireOreGenerator(), 0);
+			LogHelper.info("Registered Sapphire World Generator", modid);
+		}
+		
+		MinecraftForge.EVENT_BUS.register(new ResonantToolboxEventHooks());
+		
+		Potion[] potionTypes;
+
+        for (Field f : Potion.class.getDeclaredFields())
+        {
+            f.setAccessible(true);
+
+            try
+            {
+                if (f.getName().equals("potionTypes") || f.getName().equals("field_76425_a"))
+                {
+                    Field modfield = Field.class.getDeclaredField("modifiers");
+                    modfield.setAccessible(true);
+                    modfield.setInt(f, f.getModifiers() & ~Modifier.FINAL);
+                    potionTypes = (Potion[]) f.get(null);
+                    final Potion[] newPotionTypes = new Potion[256];
+                    System.arraycopy(potionTypes, 0, newPotionTypes, 0, potionTypes.length);
+                    f.set(null, newPotionTypes);
+                }
+            } catch (Exception e)
+            {
+                System.err.println("Severe error, please report this to the mod author:");
+                System.err.println(e);
+            }
+        }
 		
 		LogHelper.info("Finished Pre Initialization", modid);
 	}
@@ -46,6 +88,9 @@ public class ResonantToolbox {
 		ResonantToolboxItems.RegisterItems();
 		ResonantToolboxBlocks.RegisterBlocks();
 		ResonantToolboxRecipes.RegisterRecipes();
+		
+		immortality = (new PotionReg(ConfigHandler.ImmortalityPotionID, false, 0)).setPotionName("potion.immortality");
+		LogHelper.info("Potion Effect Registered", modid);
 		
 		LogHelper.info("Finished Initialization", modid);
 	}

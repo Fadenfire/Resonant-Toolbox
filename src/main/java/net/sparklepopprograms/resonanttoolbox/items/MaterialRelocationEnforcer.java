@@ -21,6 +21,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.sparklepopprograms.core.util.FormatHelper;
 import net.sparklepopprograms.resonanttoolbox.ResonantToolbox;
+import net.sparklepopprograms.resonanttoolbox.util.ConfigHandler;
 import net.sparklepopprograms.resonanttoolbox.util.ResonantToolboxTab;
 
 public class MaterialRelocationEnforcer extends Item implements IEnergyContainerItem {
@@ -44,8 +45,8 @@ public class MaterialRelocationEnforcer extends Item implements IEnergyContainer
 		if (item.stackTagCompound == null) {
 			item.stackTagCompound = new NBTTagCompound();
 		}
-		if (item.stackTagCompound.getInteger("Energy") >= 200000) {
-			item.stackTagCompound.setInteger("Energy", item.stackTagCompound.getInteger("Energy") - 200000);
+		if (item.stackTagCompound.getInteger("Energy") >= ConfigHandler.MaterialRelocationEnforcerEnergyUsage * 1000) {
+			item.stackTagCompound.setInteger("Energy", item.stackTagCompound.getInteger("Energy") - ConfigHandler.MaterialRelocationEnforcerEnergyUsage * 1000);
 			world.func_147480_a(x, y, z, true);
 		} else {
 			if (!world.isRemote) {
@@ -65,7 +66,7 @@ public class MaterialRelocationEnforcer extends Item implements IEnergyContainer
 		
 		text.add("Charge: " + FormatHelper.shortenNumber(item.stackTagCompound.getInteger("Energy")) + " / " + FormatHelper.shortenNumber(this.capacity) + " RF");
 		text.add(EnumChatFormatting.GREEN + "Destroys blocks instantly");
-		text.add(EnumChatFormatting.GREEN + "Uses 200K RF per block.");
+		text.add(EnumChatFormatting.GREEN + "Uses " + FormatHelper.shortenNumber(ConfigHandler.MaterialRelocationEnforcerEnergyUsage * 1000) + " RF per block.");
 		
 		FormatHelper.addShiftTooltip(list, text);
 	}

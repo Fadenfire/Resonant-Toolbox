@@ -10,12 +10,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.sparklepopprograms.core.util.FormatHelper;
 import net.sparklepopprograms.resonanttoolbox.ResonantToolbox;
+import net.sparklepopprograms.resonanttoolbox.util.ConfigHandler;
 import net.sparklepopprograms.resonanttoolbox.util.ResonantToolboxTab;
 
 public class Immortality_Engine extends Item implements IEnergyContainerItem {
@@ -31,7 +33,7 @@ public class Immortality_Engine extends Item implements IEnergyContainerItem {
 		this.setCreativeTab(ResonantToolboxTab.tab);
 		this.setMaxStackSize(1);
 		this.setMaxTransfer(10000000);
-		this.setCapacity(1000000000);
+		this.setCapacity(600000000);
 	}
 
 	@Override
@@ -40,10 +42,10 @@ public class Immortality_Engine extends Item implements IEnergyContainerItem {
 			item.stackTagCompound = new NBTTagCompound();
 		}
 		
-		if (!((EntityPlayer)player).capabilities.isCreativeMode && item.stackTagCompound.getBoolean("Activated") == true) {
-			if (item.stackTagCompound.getInteger("Energy") >= 50000) {
-				item.stackTagCompound.setInteger("Energy", item.stackTagCompound.getInteger("Energy") - 50000);
-				((EntityPlayer)player).addPotionEffect(new PotionEffect(11, 1, 100, true));
+		if (item.stackTagCompound.getBoolean("Activated") == true) {
+			if (item.stackTagCompound.getInteger("Energy") >= ConfigHandler.ImortalityEngineEnergyUsage * 1000) {
+				item.stackTagCompound.setInteger("Energy", item.stackTagCompound.getInteger("Energy") - ConfigHandler.ImortalityEngineEnergyUsage * 1000);
+				((EntityPlayer)player).addPotionEffect(new PotionEffect(70, 5, 0, true));
 			}
 		}
 	}
@@ -58,12 +60,12 @@ public class Immortality_Engine extends Item implements IEnergyContainerItem {
 		
 		text.add("Charge: " + FormatHelper.shortenNumber(item.stackTagCompound.getInteger("Energy")) + " / " + FormatHelper.shortenNumber(this.capacity) + " RF");
 		text.add(EnumChatFormatting.GREEN + "Grants Immortality to the user.");
-		text.add(EnumChatFormatting.GREEN + "Uses 50K RF per tick.");
+		text.add(EnumChatFormatting.GREEN + "Uses " + FormatHelper.shortenNumber(ConfigHandler.ImortalityEngineEnergyUsage * 1000) + " RF per tick.");
 		
 		if (item.stackTagCompound.getBoolean("Activated") == true) {
-			text.add(EnumChatFormatting.YELLOW + "Use while sneaking to acitvate.");
-		} else if (item.stackTagCompound.getBoolean("Activated") == false) {
 			text.add(EnumChatFormatting.YELLOW + "Use while sneaking to deacitvate.");
+		} else if (item.stackTagCompound.getBoolean("Activated") == false) {
+			text.add(EnumChatFormatting.YELLOW + "Use while sneaking to acitvate.");
 		}
 		
 		FormatHelper.addShiftTooltip(list, text);

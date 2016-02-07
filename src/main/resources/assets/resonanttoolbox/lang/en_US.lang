@@ -14,3 +14,7 @@ item.Immortality_Engine.name=Immortality Engine
 //Blocks
 
 tile.Sapphire_Ore.name=Sapphire Ore
+
+//Potion
+
+potion.immortality=Immortality
