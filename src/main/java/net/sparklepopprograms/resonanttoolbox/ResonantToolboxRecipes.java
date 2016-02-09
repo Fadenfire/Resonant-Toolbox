@@ -18,7 +18,7 @@ public class ResonantToolboxRecipes {
 		ItemStack enderiumIngot = GameRegistry.findItemStack("ThermalFoundation", "ingotEnderium", 1);
 		ItemStack bronzeIngot = GameRegistry.findItemStack("ThermalFoundation", "ingotBronze", 1);
 		
-		ThermalExpansionHelper.addTransposerFill(80000, new ItemStack(ResonantToolboxItems.Sapphire, 1, 0), new ItemStack(ResonantToolboxItems.Sapphire, 1, 1), new FluidStack(FluidRegistry.getFluid("ender"), 16000), false);
+		ThermalExpansionHelper.addTransposerFill(120000, new ItemStack(ResonantToolboxItems.Sapphire, 1, 0), new ItemStack(ResonantToolboxItems.Sapphire, 1, 1), new FluidStack(FluidRegistry.getFluid("ender"), 32000), false);
 		ThermalExpansionHelper.addPulverizerRecipe(2400, new ItemStack(ResonantToolboxBlocks.Sapphire_Ore), new ItemStack(ResonantToolboxItems.Sapphire, 2));
 		
 		if (ConfigHandler.enableMaterialRelocationEnforcer) {
