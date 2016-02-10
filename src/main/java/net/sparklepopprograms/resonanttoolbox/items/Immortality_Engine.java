@@ -9,6 +9,7 @@ import cofh.api.energy.IEnergyContainerItem;
 import cofh.api.energy.ItemEnergyContainer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -160,6 +161,11 @@ public class Immortality_Engine extends Item implements IEnergyContainerItem {
 	public int getMaxEnergyStored(ItemStack container) {
 
 		return capacity;
+	}
+	
+	@Override
+	public EnumRarity getRarity(ItemStack par1ItemStack) {
+		 return EnumRarity.rare;
 	}
 
 }

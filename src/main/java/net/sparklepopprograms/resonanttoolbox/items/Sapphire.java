@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
@@ -23,7 +24,7 @@ public class Sapphire extends Item {
 	@Override
 	public void addInformation(ItemStack item, EntityPlayer player, List list, boolean p_77624_4_) {
 		if (item.getItemDamage() == 1) {
-			list.add(EnumChatFormatting.BLUE + "It seems to be resonating...");
+			list.add(EnumChatFormatting.GREEN + "It seems to be resonating...");
 		}
 	}
 
@@ -45,6 +46,15 @@ public class Sapphire extends Item {
 			return true;
 		} else {
 			return false;
+		}
+	}
+	
+	@Override
+	public EnumRarity getRarity(ItemStack item) {
+		if (item.getItem().getDamage(item) == 1) {
+			return EnumRarity.rare;
+		} else {
+			return EnumRarity.common;
 		}
 	}
 

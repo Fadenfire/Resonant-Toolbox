@@ -17,15 +17,16 @@ public class ResonantToolboxRecipes {
 		
 		ItemStack enderiumIngot = GameRegistry.findItemStack("ThermalFoundation", "ingotEnderium", 1);
 		ItemStack bronzeIngot = GameRegistry.findItemStack("ThermalFoundation", "ingotBronze", 1);
+		ItemStack tesseract = GameRegistry.findItemStack("ThermalExpansion", "Tesseract", 1);
 		
-		ThermalExpansionHelper.addTransposerFill(120000, new ItemStack(ResonantToolboxItems.Sapphire, 1, 0), new ItemStack(ResonantToolboxItems.Sapphire, 1, 1), new FluidStack(FluidRegistry.getFluid("ender"), 32000), false);
+		ThermalExpansionHelper.addSmelterRecipe(120000, new ItemStack(ResonantToolboxItems.Sapphire, 4, 0),  new ItemStack(Items.nether_star, 32, 0),  new ItemStack(ResonantToolboxItems.Sapphire, 2, 1));
 		ThermalExpansionHelper.addPulverizerRecipe(2400, new ItemStack(ResonantToolboxBlocks.Sapphire_Ore), new ItemStack(ResonantToolboxItems.Sapphire, 2));
 		
 		if (ConfigHandler.enableMaterialRelocationEnforcer) {
 		GameRegistry.addRecipe(new ShapedOreRecipe(ResonantToolboxItems.MRE, new Object[] {" OS", " EO", "I  ", 'S', new ItemStack(ResonantToolboxItems.Sapphire, 1, 1), 'I', ResonantToolboxItems.Iron_Rod, 'O', Blocks.obsidian, 'E', ResonantToolboxItems.Resonating_Engine}));
 		}
 		
-		GameRegistry.addRecipe(new ShapedOreRecipe(ResonantToolboxItems.Resonating_Engine, new Object[] {"ESE", "SNS", "ESE", 'S', new ItemStack(ResonantToolboxItems.Sapphire, 1, 1), 'N', Items.nether_star, 'E', enderiumIngot}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(ResonantToolboxItems.Resonating_Engine, new Object[] {"ESE", "STS", "ESE", 'S', new ItemStack(ResonantToolboxItems.Sapphire, 1, 1), 'T', tesseract, 'E', enderiumIngot}));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ResonantToolboxItems.Iron_Rod, 4), new Object[] {"I", "I", 'I', Items.iron_ingot}));
 		
 		if (ConfigHandler.enableImortalityEngine) {

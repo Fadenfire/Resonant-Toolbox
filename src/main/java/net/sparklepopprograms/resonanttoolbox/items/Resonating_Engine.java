@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
@@ -28,6 +29,11 @@ public class Resonating_Engine extends Item {
 		text.add(EnumChatFormatting.GREEN + "Has been know to make your head explode.");
 		
 		FormatHelper.addShiftTooltip(list, text);
+	}
+	
+	@Override
+	public EnumRarity getRarity(ItemStack par1ItemStack) {
+		return EnumRarity.rare;
 	}
 
 }

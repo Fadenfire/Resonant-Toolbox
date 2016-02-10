@@ -42,7 +42,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 public class ResonantToolbox {
 	
 	public static final String modid = "ResonantToolbox";
-	public static final String version = "1.0.4";
+	public static final String version = "1.0.5";
 	public static final String dependencies = "required-after:DimensionalCore@[1.0.2,);required-after:ThermalExpansion@[1.7.10R4.1.1B237,)";
 
 	public static Potion immortality;
