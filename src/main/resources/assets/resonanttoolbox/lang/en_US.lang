@@ -10,6 +10,8 @@ item.Sapphire_1.name=Resonating Sapphire
 item.Iron_Rod.name=Iron Rod
 item.Resonating_Engine.name=Resonating Engine
 item.Immortality_Engine.name=Immortality Engine
+item.InfinitySword.name=Infinity Sword
+item.SpaceTimeNebula.name=Space-Time Nebula
 
 //Blocks
 
@@ -18,3 +20,8 @@ tile.Sapphire_Ore.name=Sapphire Ore
 //Potion
 
 potion.immortality=Immortality
+
+//Death Message
+
+death.attack.infinity=%1$s was sliced into oblivion by %2$s
+death.attack.infinityBlast=%1$s was blasted to bits by %2$s

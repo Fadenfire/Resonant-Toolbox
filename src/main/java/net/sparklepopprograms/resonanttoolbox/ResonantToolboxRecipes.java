@@ -32,6 +32,10 @@ public class ResonantToolboxRecipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(ResonantToolboxItems.Immortality_Engine, new Object[] {"ISI", "SES", "ISI", 'S', new ItemStack(ResonantToolboxItems.Sapphire, 1, 1), 'E', ResonantToolboxItems.Resonating_Engine, 'I', bronzeIngot}));
 		}
 		
+		if (ConfigHandler.enableInfinitySword) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ResonantToolboxItems.InfinitySword), new Object[] {" S ", " S ", "ERE", 'S', new ItemStack(ResonantToolboxItems.Sapphire, 1, 1), 'E', ResonantToolboxItems.Resonating_Engine, 'R', ResonantToolboxItems.Iron_Rod}));
+		}
+		
 		LogHelper.info("Registered Recipes", ResonantToolbox.modid);
 	}
 

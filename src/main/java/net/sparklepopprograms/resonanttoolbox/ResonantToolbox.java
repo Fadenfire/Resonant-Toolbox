@@ -6,6 +6,7 @@ import java.lang.reflect.Modifier;
 import scala.Int;
 import scala.tools.nsc.settings.Final;
 import net.minecraft.item.ItemStack;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -15,16 +16,20 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.entity.RenderArrow;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
 import net.sparklepopprograms.core.util.LogHelper;
+import net.sparklepopprograms.resonanttoolbox.entity.InfinityBlast;
+import net.sparklepopprograms.resonanttoolbox.render.RenderInfinityBlast;
 import net.sparklepopprograms.resonanttoolbox.util.ConfigHandler;
 import net.sparklepopprograms.resonanttoolbox.util.PotionReg;
 import net.sparklepopprograms.resonanttoolbox.util.ResonantToolboxEventHooks;
@@ -37,8 +42,8 @@ import cpw.mods.fml.common.Mod.EventHandler;
 public class ResonantToolbox {
 	
 	public static final String modid = "ResonantToolbox";
-	public static final String version = "1.0.3";
-	public static final String dependencies = "required-after:DimensionalCore@[1.0.1,);required-after:ThermalExpansion@[1.7.10R4.1.1B237,)";
+	public static final String version = "1.0.4";
+	public static final String dependencies = "required-after:DimensionalCore@[1.0.2,);required-after:ThermalExpansion@[1.7.10R4.1.1B237,)";
 
 	public static Potion immortality;
 	
@@ -91,6 +96,9 @@ public class ResonantToolbox {
 		
 		immortality = (new PotionReg(ConfigHandler.ImmortalityPotionID, false, 0)).setPotionName("potion.immortality");
 		LogHelper.info("Potion Effect Registered", modid);
+		
+		EntityRegistry.registerModEntity(InfinityBlast.class, "InfinityBlast", 90, this, 120, 3, true);
+		RenderingRegistry.registerEntityRenderingHandler(InfinityBlast.class, new RenderInfinityBlast());
 		
 		LogHelper.info("Finished Initialization", modid);
 	}

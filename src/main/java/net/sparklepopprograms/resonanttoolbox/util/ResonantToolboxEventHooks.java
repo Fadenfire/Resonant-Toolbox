@@ -12,6 +12,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.sparklepopprograms.core.util.LogHelper;
 import net.sparklepopprograms.resonanttoolbox.ResonantToolbox;
+import net.sparklepopprograms.resonanttoolbox.entity.InfinityBlast;
 
 public class ResonantToolboxEventHooks {
 	
@@ -29,7 +30,11 @@ public class ResonantToolboxEventHooks {
 	public void onEntityHurt(LivingHurtEvent event) {
 		if (event.entityLiving.isPotionActive(ResonantToolbox.immortality)) {
 			if (!(event.source == DamageSource.outOfWorld)) {
-				event.setCanceled(true);
+				if (!(event.source == InfinityDamage.causeInfinityDamage(event.source.getSourceOfDamage()))) {
+					if (!(event.source == InfinityBlastDamage.causeInfinityDamage(new InfinityBlast(Minecraft.getMinecraft().theWorld), event.source.getSourceOfDamage()))) {
+						event.setCanceled(true);
+					}
+				}
 			}
 		}
 	}
