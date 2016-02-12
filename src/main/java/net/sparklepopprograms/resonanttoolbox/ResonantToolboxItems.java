@@ -18,6 +18,7 @@ public class ResonantToolboxItems {
 	public static Item Resonating_Engine;
 	public static Item Immortality_Engine;
 	public static Item InfinitySword;
+	public static Item EyeOfInfinity;
 	
 	public static void RegisterItems() {
 		
@@ -25,6 +26,7 @@ public class ResonantToolboxItems {
 		Sapphire = new Sapphire();
 		Iron_Rod = new Item().setUnlocalizedName("Iron_Rod").setTextureName(ResonantToolbox.modid + ":Iron_Rod").setCreativeTab(ResonantToolboxTab.tab);
 		Resonating_Engine = new Resonating_Engine();
+		EyeOfInfinity = new EyeOfInfinity();
 		if (ConfigHandler.enableImortalityEngine) {Immortality_Engine = new Immortality_Engine();}
 		if (ConfigHandler.enableInfinitySword) {InfinitySword = new InfinitySword();}
 		
@@ -32,6 +34,7 @@ public class ResonantToolboxItems {
 		GameRegistry.registerItem(Sapphire, "Sapphire");
 		GameRegistry.registerItem(Iron_Rod, "Iron_Rod");
 		GameRegistry.registerItem(Resonating_Engine, "Resonating_Engine");
+		GameRegistry.registerItem(EyeOfInfinity, "EyeOfInfinity");
 		if (ConfigHandler.enableImortalityEngine) {GameRegistry.registerItem(Immortality_Engine, "Immortality_Engine");}
 		if (ConfigHandler.enableInfinitySword) {GameRegistry.registerItem(InfinitySword, "InfinitySword");}
 		

@@ -165,7 +165,7 @@ public class Immortality_Engine extends Item implements IEnergyContainerItem {
 	
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		 return EnumRarity.rare;
+		 return EnumRarity.epic;
 	}
 
 }
