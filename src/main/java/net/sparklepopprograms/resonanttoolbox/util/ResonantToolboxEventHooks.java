@@ -30,11 +30,7 @@ public class ResonantToolboxEventHooks {
 	public void onEntityHurt(LivingHurtEvent event) {
 		if (event.entityLiving.isPotionActive(ResonantToolbox.immortality)) {
 			if (!(event.source == DamageSource.outOfWorld)) {
-				if (!(event.source == InfinityDamage.causeInfinityDamage(event.source.getSourceOfDamage()))) {
-					if (!(event.source == InfinityBlastDamage.causeInfinityDamage(new InfinityBlast(Minecraft.getMinecraft().theWorld), event.source.getSourceOfDamage()))) {
-						event.setCanceled(true);
-					}
-				}
+				event.setCanceled(true);
 			}
 		}
 	}

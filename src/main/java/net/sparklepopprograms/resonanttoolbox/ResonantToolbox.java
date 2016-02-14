@@ -42,7 +42,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 public class ResonantToolbox {
 	
 	public static final String modid = "ResonantToolbox";
-	public static final String version = "1.0.6";
+	public static final String version = "1.0.7";
 	public static final String dependencies = "required-after:DimensionalCore@[1.0.3,);required-after:ThermalExpansion@[1.7.10R4.1.1B237,)";
 
 	public static Potion immortality;
@@ -98,7 +98,10 @@ public class ResonantToolbox {
 		LogHelper.info("Potion Effect Registered", modid);
 		
 		EntityRegistry.registerModEntity(InfinityBlast.class, "InfinityBlast", 90, this, 120, 3, true);
-		RenderingRegistry.registerEntityRenderingHandler(InfinityBlast.class, new RenderInfinityBlast());
+		
+		if (event.getSide() == Side.CLIENT) {
+			this.loadRender();
+		}
 		
 		LogHelper.info("Finished Initialization", modid);
 	}
@@ -108,5 +111,10 @@ public class ResonantToolbox {
 		
 		
 		LogHelper.info("Finished Post Initialization", modid);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void loadRender() {
+		RenderingRegistry.registerEntityRenderingHandler(InfinityBlast.class, new RenderInfinityBlast());
 	}
 }
