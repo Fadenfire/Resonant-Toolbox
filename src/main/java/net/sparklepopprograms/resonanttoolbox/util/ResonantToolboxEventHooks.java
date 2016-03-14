@@ -10,7 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.sparklepopprograms.core.util.LogHelper;
+import net.sparklepopprograms.core.helpers.LogHelper;
 import net.sparklepopprograms.resonanttoolbox.ResonantToolbox;
 import net.sparklepopprograms.resonanttoolbox.entity.InfinityBlast;
 

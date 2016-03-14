@@ -18,7 +18,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import net.sparklepopprograms.core.util.FormatHelper;
+import net.sparklepopprograms.core.helpers.FormatHelper;
 import net.sparklepopprograms.resonanttoolbox.ResonantToolbox;
 import net.sparklepopprograms.resonanttoolbox.util.ConfigHandler;
 import net.sparklepopprograms.resonanttoolbox.util.ResonantToolboxTab;

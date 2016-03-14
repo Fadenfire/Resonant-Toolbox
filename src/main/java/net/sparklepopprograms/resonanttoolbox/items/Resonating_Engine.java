@@ -8,7 +8,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
-import net.sparklepopprograms.core.util.FormatHelper;
+import net.sparklepopprograms.core.helpers.FormatHelper;
 import net.sparklepopprograms.resonanttoolbox.ResonantToolbox;
 import net.sparklepopprograms.resonanttoolbox.util.ResonantToolboxTab;
 

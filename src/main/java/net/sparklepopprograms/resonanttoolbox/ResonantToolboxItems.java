@@ -5,7 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import net.sparklepopprograms.core.util.LogHelper;
+import net.sparklepopprograms.core.helpers.LogHelper;
 import net.sparklepopprograms.resonanttoolbox.items.*;
 import net.sparklepopprograms.resonanttoolbox.util.ConfigHandler;
 import net.sparklepopprograms.resonanttoolbox.util.ResonantToolboxTab;

@@ -4,7 +4,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.sparklepopprograms.core.util.LogHelper;
+import net.sparklepopprograms.core.helpers.LogHelper;
 import net.sparklepopprograms.resonanttoolbox.blocks.Sapphire_Ore;
 import net.sparklepopprograms.resonanttoolbox.items.MaterialRelocationEnforcer;
 

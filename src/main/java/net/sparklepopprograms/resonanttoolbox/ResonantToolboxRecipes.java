@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.sparklepopprograms.core.util.LogHelper;
+import net.sparklepopprograms.core.helpers.LogHelper;
 import net.sparklepopprograms.resonanttoolbox.util.ConfigHandler;
 
 public class ResonantToolboxRecipes {

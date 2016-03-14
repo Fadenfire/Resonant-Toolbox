@@ -27,7 +27,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
-import net.sparklepopprograms.core.util.LogHelper;
+import net.sparklepopprograms.core.helpers.LogHelper;
 import net.sparklepopprograms.resonanttoolbox.entity.InfinityBlast;
 import net.sparklepopprograms.resonanttoolbox.render.RenderInfinityBlast;
 import net.sparklepopprograms.resonanttoolbox.util.ConfigHandler;

@@ -18,7 +18,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.sparklepopprograms.core.util.FormatHelper;
+import net.sparklepopprograms.core.helpers.FormatHelper;
 import net.sparklepopprograms.resonanttoolbox.ResonantToolbox;
 import net.sparklepopprograms.resonanttoolbox.entity.InfinityBlast;
 import net.sparklepopprograms.resonanttoolbox.util.ConfigHandler;
